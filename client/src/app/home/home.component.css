@@ -1,0 +1,24 @@
+.slick-slider {
+    width: 60%;
+    margin: auto;
+}
+
+
+
+.container.register {
+    background-image: url("../../assets/4.webp");
+    width: 80%;
+}
+
+.login{
+    width: 100%;
+    display: flex;
+}
+
+.login-div {
+    width:60%;
+}
+
+.form-control{
+    border: solid #9f32ce;
+}

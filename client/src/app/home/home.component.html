@@ -1,0 +1,42 @@
+<!-- <div class="container mt-5">
+    <div *ngIf="!registerMode" style="text-align:center;">
+        <h1>Find your match</h1>
+        <p class="lead">Come on in to view your matches... all you need to do is sign up</p>
+        <div class="text-center">
+            <button (click)="registerToggle()" class="btn btn-primary btn-lg me-2"> Register</button>
+            <button class="btn btn-info btn-lg"> Learn more</button>
+        </div>
+    </div>
+</div> -->
+<div *ngIf="registerMode" class="container register mt-5">
+    <div class="row justify-content-center">
+        <div class="col-4 mt-5 mb-5">
+            <!-- from parent component to child component -->
+            <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+        </div>
+    </div>
+</div>
+<div *ngIf="!registerMode" class="container mt-5">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let image of images" class="slide">
+            <img src="{{ image.img }}" alt="" width="100%">
+        </div>
+    </ngx-slick-carousel>
+</div>
+
+<!-- md:medium-sized screens -->
+<!-- #loginForm ="ngForm": form name is loginForm and is a angular form -->
+<div *ngIf="!registerMode" class="login mt-5 mb-5 row justify-content-center">
+    <div class="login-div">
+        <form *ngIf="(accountService.currentUser$|async)===null" #loginForm="ngForm" class="d-flex mt-2 mt-md-0"
+            (ngSubmit)="login()" autocomplete="off">
+            <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text"
+                placeholder="UserName">
+            <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
+                placeholder="Password">
+            <button class="btn btn-primary btn-lg me-2" type="submit">Login</button>
+            <button (click)="registerToggle()" class="btn btn-info btn-lg"> Register</button>
+        </form>
+    </div>
+
+</div>
